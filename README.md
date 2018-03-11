@@ -1,0 +1,2 @@
+# WhoWantsMoney
+For Software Design
