@@ -1,0 +1,33 @@
+﻿<Window x:Class="WhoWantsMoney.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WhoWantsMoney"
+        mc:Ignorable="d"
+        Title="Main Menu" Height="700" Width="700" Background="#16A085" MinHeight="700" MinWidth="700" Icon="Images/Icons/icon_f9t_icon.ico">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="I need a dolla!" Grid.Column="1" Grid.Row="0" Style="{StaticResource headingStyle}"></Label>
+
+        <Button x:Name="startBtn" Content="Start Game" Grid.Row="2" Grid.Column="1" Click="startBtn_Click" Style="{StaticResource answerBtn}"></Button>
+        <Button x:Name="leaderBtn" Content="Leaderboard" Grid.Row="3" Grid.Column="1" Style="{StaticResource invertedButton}"></Button>
+        <Button x:Name="quitBtn" Content="Quit Game" Grid.Row="4" Grid.Column="1" Click="quitBtn_Click" Style="{StaticResource answerBtn}"></Button>
+    </Grid>
+</Window>

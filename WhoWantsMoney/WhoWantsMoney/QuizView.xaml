@@ -1,0 +1,61 @@
+﻿<Window x:Class="WhoWantsMoney.QuizView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WhoWantsMoney"
+        mc:Ignorable="d"
+        Title="Quiz View"  Height="700" Width="700" Background="#16A085" MinHeight="700" MinWidth="700" Icon="Images/Icons/icon_f9t_icon.ico">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Return to home -->
+        <Button x:Name="btnReturnHome" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="64" Width="64" Background="{x:Null}" BorderBrush="{x:Null}" Click="btnReturnHome_Click">
+            <Image Source="./Images/Icons/home-icon.png"></Image>
+        </Button>
+        
+        <!-- Question Label -->
+        <Label x:Name="lblQuestion" Grid.Column="1" Style="{StaticResource headingStyle}" FlowDirection="LeftToRight">
+            <AccessText TextWrapping="WrapWithOverflow">
+                Who killed JFK?
+            </AccessText>
+        </Label>
+        
+        <!--Buttons for answers -->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            
+            <Button Grid.Row="0" x:Name="btnA" Content="1) Is it this" Style="{StaticResource answerBtn}" Click="btn_Click"/>
+            <Button Grid.Row="1" x:Name="btnB" Content="2) Is it this" Style="{StaticResource invertedButton}" Click="btn_Click"/>
+            <Button Grid.Row="2" x:Name="btnC" Content="3) Is it this" Style="{StaticResource answerBtn}" Click="btn_Click"/>
+            <Button Grid.Row="3" x:Name="btnD" Content="4) Is it this" Style="{StaticResource invertedButton}" Click="btn_Click"/>
+        </Grid>
+
+        <Button x:Name="btnNextQ" Grid.Row="2" Grid.Column="1" Content="Next Question &#x3009;" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource nextButton}"></Button>
+
+        <Label x:Name="lblFeedback" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Style="{StaticResource feedbackStyle}" Visibility="Hidden">
+            <AccessText TextWrapping="WrapWithOverflow">
+                Correct! The answer was Lee Harvey Oswald
+            </AccessText>
+        </Label>
+        
+    </Grid>
+</Window>
