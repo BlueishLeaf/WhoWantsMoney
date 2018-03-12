@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WhoWantsMoney
 {
@@ -12,6 +13,8 @@ namespace WhoWantsMoney
         public int ID { get; set; }
         public string Text { get; set; }
         public List<string> Answers { get; set; }
+
+        [JsonConverter(typeof(DifficultyEnumConverter))]
         public Difficulty Difficulty { get; set; }
         public int CorrectIndex { get; set; }
         public Question()

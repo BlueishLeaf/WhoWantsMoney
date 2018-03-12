@@ -21,8 +21,8 @@ namespace WhoWantsMoney
             Player newPlayer = new Player() { ID = 0, Name = "John Smith", LivesRemaining = 3 };
             QuestionList = new List<Question>();
             List<Question> allQuestions = new QuestionData().GetQuestions();
-            //QuestionList = SelectQuestions(allQuestions);
-            QuestionList = allQuestions;
+            QuestionList = SelectQuestions(allQuestions);
+            //QuestionList = allQuestions;
             AttemptList = new List<Attempt>();
         }
         public void StartGame()
@@ -70,29 +70,41 @@ namespace WhoWantsMoney
             Random rand = new Random();
             List<Question> randomisedQuestions = new List<Question>();
             randomisedQuestions = QuestionList;
+            List<Question> levelSpecificQuestions = new List<Question>();
 
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    List<Question> levelSpecificQuestions = new List<Question>();
-            //    if (i == 0)
-            //    {
-            //        levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Easy).ToList();
-            //    }
-            //    else if (i == 3)
-            //    {
-            //        levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Normal).ToList();
-            //    }
-            //    else if (i == 6)
-            //    {
-            //        levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Hard).ToList();
-            //    }
-            //    else if (i == 8)
-            //    {
-            //        levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Genius).ToList();
-            //    }
+            for (int i = 0; i < 10; i++)
+            {
+                
+                if (i == 0)
+                {
+                    levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Easy).ToList();
+                }
+                else if (i == 3)
+                {
+                    levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Normal).ToList();
+                }
+                else if (i == 6)
+                {
+                    levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Hard).ToList();
+                }
+                else if (i == 8)
+                {
+                    levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Genius).ToList();
+                }
 
-            //    randomisedQuestions.Add(levelSpecificQuestions[rand.Next(0, levelSpecificQuestions.Count)]);
-            //}
+                try
+                {
+                    Question chosen = levelSpecificQuestions[rand.Next(0, levelSpecificQuestions.Count)];
+                    randomisedQuestions.Add(chosen);
+                    SelectQuestions.Remove(chosen);
+                    levelSpecificQuestions.Remove(chosen);
+                }
+                catch(Exception e)
+                {
+                    continue;
+                }
+                
+            }
 
             return randomisedQuestions;
         }

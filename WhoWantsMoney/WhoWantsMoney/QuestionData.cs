@@ -8,7 +8,7 @@ namespace WhoWantsMoney
 {
     class QuestionData : IGetQuestions
     {
-        private string path = @"C:\Users\killi\Documents\Repos\WhoWantsMoney\WhoWantsMoney\WhoWantsMoney\questions.json";
+        private string path = @"../../questions.json";
         private JsonControl jsonControl;
 
         public List<Question> GetQuestions()
