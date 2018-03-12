@@ -1,0 +1,38 @@
+﻿[
+  {
+    "ID": 0,
+    "Text": "Who killed KFC?",
+    "Answers": [
+      "Barack Obama",
+      "Lee Harvey Oswald",
+      "George Bush",
+      "Abraham Hitler"
+    ],
+    "Difficulty": 1,
+    "CorrectIndex": 1
+  },
+  {
+    "ID": 1,
+    "Text": "Who created Facebook?",
+    "Answers": [
+      "Barack Obama",
+      "Tom Hanks",
+      "George Bush",
+      "Mark ZUCC"
+    ],
+    "Difficulty": 3,
+    "CorrectIndex": 3
+  },
+  {
+    "ID": 2,
+    "Text": "Who killed Mark Zuckerburg?",
+    "Answers": [
+      "Barack Obama",
+      "Lee Harvey Oswald",
+      "George Bush",
+      "Mike Tyson"
+    ],
+    "Difficulty": 2,
+    "CorrectIndex": 0
+  }
+]

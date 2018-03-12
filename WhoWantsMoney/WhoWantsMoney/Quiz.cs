@@ -18,12 +18,11 @@ namespace WhoWantsMoney
 
         public Quiz()
         {
-            //Player newPlayer = new Player();
-            //QuestionList = new List<Question>();
-            //List<Question> allQuestions = new QuestionData().GetQuestions();
-            //this.QuestionList = SelectQuestions(allQuestions);
-            ////QuestionList.Add(new Question { ID = 0, Text = "Test", Answers = { "test1", "test2", "test3", "test4" }, Difficulty = Difficulty.Easy, CorrectIndex = 0 });
-            //this.AttemptList = new List<Attempt>();
+            Player newPlayer = new Player() { ID = 0, Name = "John Smith", LivesRemaining = 3 };
+            QuestionList = new List<Question>();
+            List<Question> allQuestions = new QuestionData().GetQuestions();
+            QuestionList = SelectQuestions(allQuestions);
+            AttemptList = new List<Attempt>();
 
         }
         public void StartGame()
@@ -74,11 +73,11 @@ namespace WhoWantsMoney
             for (int i = 0; i < 10; i++)
             {
                 List<Question> levelSpecificQuestions = new List<Question>();
-                if(i == 0)
+                if (i == 0)
                 {
                     levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Easy).ToList();
                 }
-                else if(i == 3)
+                else if (i == 3)
                 {
                     levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Normal).ToList();
                 }
@@ -86,7 +85,7 @@ namespace WhoWantsMoney
                 {
                     levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Hard).ToList();
                 }
-                else if(i == 8)
+                else if (i == 8)
                 {
                     levelSpecificQuestions = SelectQuestions.Where(x => x.Difficulty == Difficulty.Genius).ToList();
                 }
