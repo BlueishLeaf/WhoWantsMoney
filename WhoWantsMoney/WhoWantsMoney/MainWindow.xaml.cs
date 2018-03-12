@@ -27,14 +27,14 @@ namespace WhoWantsMoney
 
         private void quitBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void startBtn_Click(object sender, RoutedEventArgs e)
         {
             QuizView mainScreen = new QuizView();
             mainScreen.Show();
-            this.Close();
+            Close();
         }
     }
 }

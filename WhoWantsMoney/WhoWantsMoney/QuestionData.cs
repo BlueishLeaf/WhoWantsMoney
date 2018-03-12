@@ -8,12 +8,13 @@ namespace WhoWantsMoney
 {
     class QuestionData : IGetQuestions
     {
-        private string path = "";
+        private string path = @"C:\Users\killi\Documents\Repos\WhoWantsMoney\WhoWantsMoney\WhoWantsMoney\questions.json";
         private JsonControl jsonControl;
 
         public List<Question> GetQuestions()
         {
-            return jsonControl.ReadJson<List<Question>>(this.path);
+            jsonControl = new JsonControl();
+            return jsonControl.ReadJson<List<Question>>(path);
         }
     }
 }
