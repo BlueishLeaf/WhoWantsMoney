@@ -22,7 +22,6 @@ namespace WhoWantsMoney
             QuestionList = new List<Question>();
             List<Question> allQuestions = new QuestionData().GetQuestions();
             QuestionList = SelectQuestions(allQuestions);
-            //QuestionList = allQuestions;
             AttemptList = new List<Attempt>();
         }
         public void WinGame()
