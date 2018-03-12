@@ -16,6 +16,14 @@ namespace WhoWantsMoney
         public GameState State { get; set; }
         private int _quizIndex = 0;
 
+        public int QuizIndex
+        {
+            get
+            {
+                return this._quizIndex;
+            }
+        }
+
         public Quiz()
         {
             CurrentPlayer = new Player() { ID = 0, Name = "John Smith", LivesRemaining = 3, Score = 0 };
@@ -128,6 +136,16 @@ namespace WhoWantsMoney
                     continue;
                 }
                 
+            }
+
+            if(randomisedQuestions.Count < 10)
+            {
+                for (int i = randomisedQuestions.Count; i <= 10; i++)
+                {
+                    Question chosen = SelectQuestions[rand.Next(0, SelectQuestions.Count)];
+                    randomisedQuestions.Add(chosen);
+                    SelectQuestions.Remove(chosen);
+                }
             }
 
             return randomisedQuestions;

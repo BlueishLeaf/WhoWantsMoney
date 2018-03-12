@@ -33,8 +33,9 @@ namespace WhoWantsMoney
         private void startBtn_Click(object sender, RoutedEventArgs e)
         {
             QuizView mainScreen = new QuizView();
-            mainScreen.Show();
-            Close();
+            mainScreen.Owner = this;
+            mainScreen.ShowDialog();
+//            this.Hide();
         }
     }
 }

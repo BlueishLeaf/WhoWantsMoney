@@ -28,12 +28,22 @@ namespace WhoWantsMoney
 
         public void ChangeQuestion()
         {
-            Question currentQ = appInstance.GetQuestion();
-            lblQuestion.Content = currentQ.Text;
-            btnA.Content = currentQ.Answers[0];
-            btnB.Content = currentQ.Answers[1];
-            btnC.Content = currentQ.Answers[2];
-            btnD.Content = currentQ.Answers[3];
+            if (appInstance.QuizIndex <= 10)
+            {
+                Question currentQ = appInstance.GetQuestion();
+                lblQuestion.Content = currentQ.Text;
+                btnA.Content = currentQ.Answers[0];
+                btnB.Content = currentQ.Answers[1];
+                btnC.Content = currentQ.Answers[2];
+                btnD.Content = currentQ.Answers[3];
+            }
+            else
+            {
+                Console.WriteLine("Quiz ends....");
+                
+                this.Owner.Show();
+                this.Close();
+            }
         }
 
 
