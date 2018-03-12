@@ -43,10 +43,10 @@
             </Grid.RowDefinitions>
 
             
-            <Button Grid.Row="0" x:Name="btnA" Content="1) " Style="{StaticResource answerBtn}" Click="btn_Click"/>
-            <Button Grid.Row="1" x:Name="btnB" Content="2) " Style="{StaticResource invertedButton}" Click="btn_Click"/>
-            <Button Grid.Row="2" x:Name="btnC" Content="3) " Style="{StaticResource answerBtn}" Click="btn_Click"/>
-            <Button Grid.Row="3" x:Name="btnD" Content="4) " Style="{StaticResource invertedButton}" Click="btn_Click"/>
+            <Button Grid.Row="0" x:Name="btnA" Content="1) " Style="{StaticResource answerBtn}" Click="btnA_Click"/>
+            <Button Grid.Row="1" x:Name="btnB" Content="2) " Style="{StaticResource invertedButton}" Click="btnB_Click"/>
+            <Button Grid.Row="2" x:Name="btnC" Content="3) " Style="{StaticResource answerBtn}" Click="btnC_Click"/>
+            <Button Grid.Row="3" x:Name="btnD" Content="4) " Style="{StaticResource invertedButton}" Click="btnD_Click"/>
         </Grid>
 
         <Button x:Name="btnNextQ" Grid.Row="2" Grid.Column="1" Content="Next Question &#x3009;" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource nextButton}"></Button>

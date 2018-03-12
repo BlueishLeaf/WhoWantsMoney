@@ -18,26 +18,33 @@ namespace WhoWantsMoney
 
         public Quiz()
         {
-            Player newPlayer = new Player() { ID = 0, Name = "John Smith", LivesRemaining = 3 };
+            CurrentPlayer = new Player() { ID = 0, Name = "John Smith", LivesRemaining = 3, Score = 0 };
             QuestionList = new List<Question>();
             List<Question> allQuestions = new QuestionData().GetQuestions();
             //QuestionList = SelectQuestions(allQuestions);
             QuestionList = allQuestions;
             AttemptList = new List<Attempt>();
         }
-        public void StartGame()
+        public void WinGame()
         {
-
+            Console.WriteLine("Congratulations cheater, you win the game! Here is your report: ");
+            GameReport();
         }
 
         public void EndGame()
         {
+            Console.WriteLine("You lose, heres your report:");
             GameReport();
         }
 
         private void GameReport()
         {
-
+            Console.WriteLine("You answered the following questions: ");
+            foreach (var attempt in AttemptList)
+            {
+                Console.WriteLine(attempt.QData.Text + ',' + attempt.IsCorrect);
+            }
+            Console.WriteLine("Your score was : " + CurrentPlayer.Score);
         }
         public Question GetQuestion()
         {
@@ -45,13 +52,31 @@ namespace WhoWantsMoney
         }
         public void CorrectChoice()
         {
-            AttemptList.Add(new Attempt() { QData = QuestionList[_quizIndex] });
-            _quizIndex++;
+            AttemptList.Add(new Attempt() { QData = QuestionList[_quizIndex], IsCorrect=true });
+            Console.WriteLine("Correct Answer, you gain a point");
+            CurrentPlayer.Score++;
+            if (CurrentPlayer.Score==10)
+            {
+                WinGame();
+            }
+            else
+            {
+                _quizIndex++;
+            }
+
         }
         public void IncorrectChoice()
         {
-            AttemptList.Add(new Attempt() { QData = QuestionList[_quizIndex] });
-            EndGame();
+            AttemptList.Add(new Attempt() { QData = QuestionList[_quizIndex], IsCorrect=false });
+            CurrentPlayer.LivesRemaining -= 1;
+            if (CurrentPlayer.LivesRemaining == 0)
+            {
+                EndGame();
+            }
+            else
+            {
+                Console.WriteLine("Incorrect answer. you lose a life");
+            }
         }
         public void CheckAnswer(int index)
         {

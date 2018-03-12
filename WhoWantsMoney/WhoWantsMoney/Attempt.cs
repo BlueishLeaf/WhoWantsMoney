@@ -9,5 +9,6 @@ namespace WhoWantsMoney
     class Attempt
     {
         public Question QData { get; set; }
+        public bool IsCorrect { get; set; }
     }
 }
