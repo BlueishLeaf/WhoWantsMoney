@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Speech.Synthesis;
 
 namespace WhoWantsMoney
 {
@@ -20,6 +21,7 @@ namespace WhoWantsMoney
     public partial class QuizView : Window
     {
         Quiz appInstance = new Quiz();
+        private SpeechSynthesizer siri = new SpeechSynthesizer();
         public QuizView()
         {
             InitializeComponent();
@@ -36,11 +38,12 @@ namespace WhoWantsMoney
                 btnB.Content = currentQ.Answers[1];
                 btnC.Content = currentQ.Answers[2];
                 btnD.Content = currentQ.Answers[3];
+                siri.Speak(currentQ.Text);
             }
             else
             {
                 Console.WriteLine("Quiz ends....");
-                
+
                 this.Owner.Show();
                 this.Close();
             }
@@ -74,24 +77,28 @@ namespace WhoWantsMoney
 
         private void btnA_Click(object sender, RoutedEventArgs e)
         {
+            siri.Speak($"You chose {btnA.Content}");
             appInstance.CheckAnswer(0);
             ChangeQuestion();
         }
 
         private void btnB_Click(object sender, RoutedEventArgs e)
         {
+            siri.Speak($"You chose {btnB.Content}");
             appInstance.CheckAnswer(1);
             ChangeQuestion();
         }
 
         private void btnC_Click(object sender, RoutedEventArgs e)
         {
+            siri.Speak($"You chose {btnC.Content}");
             appInstance.CheckAnswer(2);
             ChangeQuestion();
         }
 
         private void btnD_Click(object sender, RoutedEventArgs e)
         {
+            siri.Speak($"You chose {btnD.Content}");
             appInstance.CheckAnswer(3);
             ChangeQuestion();
         }
