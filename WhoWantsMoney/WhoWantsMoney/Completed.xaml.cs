@@ -10,30 +10,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WhoWantsMoney
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Completed.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Completed : Window
     {
-        public MainWindow()
+        int result;
+        public Completed(int _result)
         {
             InitializeComponent();
+
+            result = _result;
         }
 
-        private void quitBtn_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Close();
+            lblResult.Content = result;
         }
 
-        private void startBtn_Click(object sender, RoutedEventArgs e)
+        private void btnReturnToMenu_Click(object sender, RoutedEventArgs e)
         {
-            QuizView mainScreen = new QuizView();
-            mainScreen.Show();
+            MainWindow main = new MainWindow();
+
+            main.Show();
             this.Close();
         }
     }

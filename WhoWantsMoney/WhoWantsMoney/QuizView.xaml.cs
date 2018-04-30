@@ -21,7 +21,7 @@ namespace WhoWantsMoney
     public partial class QuizView : Window
     {
         Quiz appInstance = new Quiz();
-        private SpeechSynthesizer siri = new SpeechSynthesizer();
+       // private SpeechSynthesizer siri = new SpeechSynthesizer();
         public QuizView()
         {
             InitializeComponent();
@@ -38,13 +38,16 @@ namespace WhoWantsMoney
                 btnB.Content = currentQ.Answers[1];
                 btnC.Content = currentQ.Answers[2];
                 btnD.Content = currentQ.Answers[3];
-                siri.Speak(currentQ.Text);
+                //siri.Speak(currentQ.Text);
             }
             else
             {
+
+                Completed resultWindow = new Completed(appInstance.CalculateScore());
+
                 Console.WriteLine("Quiz ends....");
 
-                this.Owner.Show();
+                resultWindow.Show();
                 this.Close();
             }
         }
@@ -77,28 +80,28 @@ namespace WhoWantsMoney
 
         private void btnA_Click(object sender, RoutedEventArgs e)
         {
-            siri.Speak($"You chose {btnA.Content}");
+           // siri.Speak($"You chose {btnA.Content}");
             appInstance.CheckAnswer(0);
             ChangeQuestion();
         }
 
         private void btnB_Click(object sender, RoutedEventArgs e)
         {
-            siri.Speak($"You chose {btnB.Content}");
+            //siri.Speak($"You chose {btnB.Content}");
             appInstance.CheckAnswer(1);
             ChangeQuestion();
         }
 
         private void btnC_Click(object sender, RoutedEventArgs e)
         {
-            siri.Speak($"You chose {btnC.Content}");
+            //siri.Speak($"You chose {btnC.Content}");
             appInstance.CheckAnswer(2);
             ChangeQuestion();
         }
 
         private void btnD_Click(object sender, RoutedEventArgs e)
         {
-            siri.Speak($"You chose {btnD.Content}");
+            //siri.Speak($"You chose {btnD.Content}");
             appInstance.CheckAnswer(3);
             ChangeQuestion();
         }

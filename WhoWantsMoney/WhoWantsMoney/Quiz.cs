@@ -26,20 +26,24 @@ namespace WhoWantsMoney
 
         public Quiz()
         {
+            State = GameState.Started;
             CurrentPlayer = new Player() { ID = 0, Name = "John Smith", LivesRemaining = 3, Score = 0 };
             QuestionList = new List<Question>();
             List<Question> allQuestions = new QuestionData().GetQuestions();
             QuestionList = SelectQuestions(allQuestions);
             AttemptList = new List<Attempt>();
+            State = GameState.InProgress;
         }
         public void WinGame()
         {
             Console.WriteLine("Congratulations cheater, you win the game! Here is your report: ");
+            State = GameState.Concluded;
             GameReport();
         }
 
         public void EndGame()
         {
+            State = GameState.Concluded;
             Console.WriteLine("You lose, heres your report:");
             GameReport();
         }
@@ -82,7 +86,7 @@ namespace WhoWantsMoney
             }
             else
             {
-                Console.WriteLine("Incorrect answer. you lose a life");
+                _quizIndex++;
             }
         }
         public void CheckAnswer(int index)
@@ -131,7 +135,7 @@ namespace WhoWantsMoney
                     SelectQuestions.Remove(chosen);
                     levelSpecificQuestions.Remove(chosen);
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     continue;
                 }
@@ -149,6 +153,12 @@ namespace WhoWantsMoney
             }
 
             return randomisedQuestions;
+        }
+
+
+        public int CalculateScore()
+        {
+            return this.CurrentPlayer.Score;
         }
     }
 }

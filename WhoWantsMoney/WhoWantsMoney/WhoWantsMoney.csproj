@@ -61,6 +61,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Attempt.cs" />
+    <Compile Include="Completed.xaml.cs">
+      <DependentUpon>Completed.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ErrorService.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="JsonConverters.cs" />
@@ -76,6 +79,10 @@
       <DependentUpon>QuizView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ranking.cs" />
+    <Page Include="Completed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
