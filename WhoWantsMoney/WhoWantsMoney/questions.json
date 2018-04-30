@@ -1,12 +1,12 @@
 ﻿[
   {
     "ID": 0,
-    "Text": "Who killed KFC?",
+    "Text": "Who killed JFK?",
     "Answers": [
       "Barack Obama",
       "Lee Harvey Oswald",
       "George Bush",
-      "Abraham Hitler"
+      "Frank Sinatra"
     ],
     "Difficulty": 0,
     "CorrectIndex": 1
@@ -25,12 +25,12 @@
   },
   {
     "ID": 2,
-    "Text": "Who killed Mark Zuckerburg?",
+    "Text": "What does the S in SOLID stand for?",
     "Answers": [
-      "Barack Obama",
-      "Lee Harvey Oswald",
-      "George Bush",
-      "Mike Tyson"
+      "Single Responsibility Principle",
+      "Single Purpose Principle",
+      "Something Else",
+      "Stand Alone Principle"
     ],
     "Difficulty": 2,
     "CorrectIndex": 0
@@ -46,7 +46,8 @@
     ],
     "Difficulty": 1,
     "CorrectIndex": 1
-  },{
+  },
+  {
     "ID": 4,
     "Text": "Who played Ross in F.R.I.E.N.D.S?",
     "Answers": [
@@ -57,7 +58,8 @@
     ],
     "Difficulty": 2,
     "CorrectIndex": 0
-  },{
+  },
+  {
     "ID": 5,
     "Text": "Who played Mike Tyson in The Hangover series?",
     "Answers": [
@@ -68,7 +70,8 @@
     ],
     "Difficulty": 2,
     "CorrectIndex": 3
-  },{
+  },
+  {
     "ID": 6,
     "Text": "What kind of weapon is a falchion?",
     "Answers": [
@@ -79,7 +82,8 @@
     ],
     "Difficulty": 2,
     "CorrectIndex": 1
-  },{
+  },
+  {
     "ID": 7,
     "Text": "What is the World's Biggest Island?",
     "Answers": [
@@ -90,7 +94,8 @@
     ],
     "Difficulty": 3,
     "CorrectIndex": 3
-  },{
+  },
+  {
     "ID": 8,
     "Text": "What is the Capital of Romania?",
     "Answers": [
@@ -101,7 +106,8 @@
     ],
     "Difficulty": 3,
     "CorrectIndex": 0
-  },{
+  },
+  {
     "ID": 9,
     "Text": "Who played Neo in The Matrix?",
     "Answers": [
@@ -112,7 +118,8 @@
     ],
     "Difficulty": 3,
     "CorrectIndex": 0
-  },{
+  },
+  {
     "ID": 10,
     "Text": "What colour jersey is worn by the winners of each stage of the Tour De France?",
     "Answers": [
@@ -123,5 +130,17 @@
     ],
     "Difficulty": 2,
     "CorrectIndex": 1
+  },
+  {
+    "ID": 11,
+    "Text": "Who lives in a pineapple under the sea?",
+    "Answers": [
+      "Bart Simpsons",
+      "Spongebob Squarepants",
+      "Squidward",
+      "Neptune"
+    ],
+    "Difficulty": 3,
+    "CorrectIndex":  2
   }
 ]
