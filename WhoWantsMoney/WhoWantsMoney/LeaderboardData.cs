@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace WhoWantsMoney
 {
-    class LeaderboardData : ILeaderboard
+    internal class LeaderboardData : ILeaderboard
     {
-        private JsonControl jsonControl;
-        private string path = "";
+        private JsonControl _jsonControl;
+        private const string Path = "";
 
-        public void SaveToLeaderboard(Ranking newRanking)
-        {
-            jsonControl.WriteJson<Ranking>(this.path, newRanking);
-        }
+        public void SaveToLeaderboard(Ranking newRanking) => _jsonControl.WriteJson<Ranking>(Path, newRanking);
 
-        public List<Ranking> WriteToLeaderboard()
-        {
-            return jsonControl.ReadJson<List<Ranking>>(this.path);
-        }
+        public List<Ranking> WriteToLeaderboard() => _jsonControl.ReadJson<List<Ranking>>(Path);
     }
 }

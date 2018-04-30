@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace WhoWantsMoney
 {
-    class QuestionData : IGetQuestions
+    internal class QuestionData : IGetQuestions
     {
-        private string path = @"../../questions.json";
-        private JsonControl jsonControl;
+        private const string Path = @"../../questions.json";
+        private JsonControl _jsonControl;
 
         public List<Question> GetQuestions()
         {
-            jsonControl = new JsonControl();
-            return jsonControl.ReadJson<List<Question>>(path);
+            _jsonControl = new JsonControl();
+            return _jsonControl.ReadJson<List<Question>>(Path);
         }
     }
 }

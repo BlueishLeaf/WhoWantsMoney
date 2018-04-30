@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace WhoWantsMoney
 {
-    class Player
+    internal class Player
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public List<Attempt> AttemptList { get; set; }
         public int Score { get; set; }

@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WhoWantsMoney
 {
     /// <summary>
     /// Interaction logic for QuizView.xaml
     /// </summary>
-    public partial class QuizView : Window
+    public partial class QuizView
     {
-        Quiz appInstance = new Quiz();
+        private readonly QuizControl _appInstance = new QuizControl();
         public QuizView()
         {
             InitializeComponent();
@@ -28,24 +17,20 @@ namespace WhoWantsMoney
 
         public void ChangeQuestion()
         {
-            if (appInstance.QuizIndex <= 10)
+            if (_appInstance.QuizIndex <= 10)
             {
-                Question currentQ = appInstance.GetQuestion();
-                lblQuestion.Content = currentQ.Text;
-                btnA.Content = currentQ.Answers[0];
-                btnB.Content = currentQ.Answers[1];
-                btnC.Content = currentQ.Answers[2];
-                btnD.Content = currentQ.Answers[3];
+                var currentQ = _appInstance.GetCurrentQuestion();
+                LblQuestion.Content = currentQ.Text;
+                BtnA.Content = currentQ.Answers[0];
+                BtnB.Content = currentQ.Answers[1];
+                BtnC.Content = currentQ.Answers[2];
+                BtnD.Content = currentQ.Answers[3];
             }
             else
-            {
-                
-                Completed resultWindow = new Completed(appInstance.CalculateScore());
-
-                Console.WriteLine("Quiz ends....");
-
+            {            
+                var resultWindow = new Completed(_appInstance.CalculateScore());
                 resultWindow.Show();
-                this.Close();
+                Close();
             }
         }
 
@@ -63,55 +48,51 @@ namespace WhoWantsMoney
                 return $"Correct! The answer was {correctAnswer}";
             }
 
-            lblLivesRemaining.Content = appInstance.CurrentPlayer.LivesRemaining;
+            LblLivesRemaining.Content = _appInstance.CurrentPlayer.LivesRemaining;
             return $"Incorrect! It was actually {correctAnswer}";
 
         }
 
         //Close current window and open a new Main menu window
-        private void btnReturnHome_Click(object sender, RoutedEventArgs e)
+        private void BtnReturnHome_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxPopUp confirmWindow = new MessageBoxPopUp();
+            var confirmWindow = new MessageBoxPopUp(){Owner = this};
             confirmWindow.Show();
         }
 
 
-        private void answer_btn_Click(object sender, RoutedEventArgs e)
+        private void BtnAnswer_Click(object sender, RoutedEventArgs e)
         {
-            Button clicked = sender as Button;
+            var clicked = (Button)sender;
             Disable();
-            string correctAnswerText;
-            bool answerCorrect = appInstance.CheckAnswer(int.Parse(clicked.Tag.ToString()), out correctAnswerText);
-            if (answerCorrect)
-                lblFeedback.Content = FormatFeedback(true, correctAnswerText);
-            else
-                lblFeedback.Content = FormatFeedback(false, correctAnswerText);
+            var answerCorrect = _appInstance.CheckAnswer(int.Parse(clicked.Tag.ToString()), out var correctAnswerText);
+            LblFeedback.Content = FormatFeedback(answerCorrect, correctAnswerText);
         }
 
-        private void btnNextQ_Click(object sender, RoutedEventArgs e)
+        private void BtnNextQ_Click(object sender, RoutedEventArgs e)
         {
-            this.appInstance.QuizIndex++;
-            lblFeedback.Content = "";
+            _appInstance.QuizIndex++;
+            LblFeedback.Content = "";
             ChangeQuestion();
             Enable();
         }
 
         private void Enable()
         {
-            btnA.IsEnabled = true;
-            btnB.IsEnabled = true;
-            btnC.IsEnabled = true;
-            btnD.IsEnabled = true;
-            btnNextQ.IsEnabled = false;
+            BtnA.IsEnabled = true;
+            BtnB.IsEnabled = true;
+            BtnC.IsEnabled = true;
+            BtnD.IsEnabled = true;
+            BtnNextQ.IsEnabled = false;
 
         }
         private void Disable()
         {
-            btnA.IsEnabled = false;
-            btnB.IsEnabled = false;
-            btnC.IsEnabled = false;
-            btnD.IsEnabled = false;
-            btnNextQ.IsEnabled = true;
+            BtnA.IsEnabled = false;
+            BtnB.IsEnabled = false;
+            BtnC.IsEnabled = false;
+            BtnD.IsEnabled = false;
+            BtnNextQ.IsEnabled = true;
 
         }
 

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WhoWantsMoney
+﻿namespace WhoWantsMoney
 {
-    class Attempt
+    internal class Attempt
     {
         public Question QData { get; set; }
         public bool IsCorrect { get; set; }
