@@ -29,7 +29,7 @@ namespace WhoWantsMoney
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            lblResult.Content = result;
+            lblResult.Content = $"{result} / 12";
         }
 
         private void btnReturnToMenu_Click(object sender, RoutedEventArgs e)

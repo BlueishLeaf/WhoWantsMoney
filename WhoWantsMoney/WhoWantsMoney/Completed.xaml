@@ -17,7 +17,7 @@
         <Label Grid.Row="0" VerticalAlignment="Bottom" Content="You completed the quiz!" Style="{StaticResource headingStyle}"/>
 
         <Label Grid.Row="1" Content="Your Score: " Style="{StaticResource feedbackStyle}" HorizontalAlignment="Left" Margin="150 0 0 0"/>
-        <Label x:Name="lblResult" Grid.Row="1" Style="{StaticResource feedbackStyle}" HorizontalAlignment="Center" Width="50" Height="50" VerticalContentAlignment="Center" />
+        <Label x:Name="lblResult" Grid.Row="1" Style="{StaticResource feedbackStyle}" HorizontalAlignment="Center" Width="115" Height="50" VerticalContentAlignment="Center" Margin="321,87,256,86" />
 
         <Button x:Name="btnReturnToMenu" Grid.Row="2" Style="{StaticResource answerBtn}" Content="Return to main menu" Height="80" Width="350" Click="btnReturnToMenu_Click"/>
     </Grid>
