@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Speech.Synthesis;
 
 namespace WhoWantsMoney
 {
@@ -21,7 +20,6 @@ namespace WhoWantsMoney
     public partial class QuizView : Window
     {
         Quiz appInstance = new Quiz();
-       // private SpeechSynthesizer siri = new SpeechSynthesizer();
         public QuizView()
         {
             InitializeComponent();
@@ -38,11 +36,10 @@ namespace WhoWantsMoney
                 btnB.Content = currentQ.Answers[1];
                 btnC.Content = currentQ.Answers[2];
                 btnD.Content = currentQ.Answers[3];
-                //siri.Speak(currentQ.Text);
             }
             else
             {
-
+                
                 Completed resultWindow = new Completed(appInstance.CalculateScore());
 
                 Console.WriteLine("Quiz ends....");
@@ -66,44 +63,57 @@ namespace WhoWantsMoney
                 return $"Correct! The answer was {correctAnswer}";
             }
 
+            lblLivesRemaining.Content = appInstance.CurrentPlayer.LivesRemaining;
             return $"Incorrect! It was actually {correctAnswer}";
+
         }
 
         //Close current window and open a new Main menu window
         private void btnReturnHome_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxPopUp confirmWindow = new MessageBoxPopUp();
-            confirmWindow.Owner = this;
-            confirmWindow.ShowDialog();
-            
+            confirmWindow.Show();
         }
 
-        private void btnA_Click(object sender, RoutedEventArgs e)
+
+        private void answer_btn_Click(object sender, RoutedEventArgs e)
         {
-           // siri.Speak($"You chose {btnA.Content}");
-            appInstance.CheckAnswer(0);
-            ChangeQuestion();
+            Button clicked = sender as Button;
+            Disable();
+            string correctAnswerText;
+            bool answerCorrect = appInstance.CheckAnswer(int.Parse(clicked.Tag.ToString()), out correctAnswerText);
+            if (answerCorrect)
+                lblFeedback.Content = FormatFeedback(true, correctAnswerText);
+            else
+                lblFeedback.Content = FormatFeedback(false, correctAnswerText);
         }
 
-        private void btnB_Click(object sender, RoutedEventArgs e)
+        private void btnNextQ_Click(object sender, RoutedEventArgs e)
         {
-            //siri.Speak($"You chose {btnB.Content}");
-            appInstance.CheckAnswer(1);
+            this.appInstance.QuizIndex++;
+            lblFeedback.Content = "";
             ChangeQuestion();
+            Enable();
         }
 
-        private void btnC_Click(object sender, RoutedEventArgs e)
+        private void Enable()
         {
-            //siri.Speak($"You chose {btnC.Content}");
-            appInstance.CheckAnswer(2);
-            ChangeQuestion();
+            btnA.IsEnabled = true;
+            btnB.IsEnabled = true;
+            btnC.IsEnabled = true;
+            btnD.IsEnabled = true;
+            btnNextQ.IsEnabled = false;
+
+        }
+        private void Disable()
+        {
+            btnA.IsEnabled = false;
+            btnB.IsEnabled = false;
+            btnC.IsEnabled = false;
+            btnD.IsEnabled = false;
+            btnNextQ.IsEnabled = true;
+
         }
 
-        private void btnD_Click(object sender, RoutedEventArgs e)
-        {
-            //siri.Speak($"You chose {btnD.Content}");
-            appInstance.CheckAnswer(3);
-            ChangeQuestion();
-        }
     }
 }

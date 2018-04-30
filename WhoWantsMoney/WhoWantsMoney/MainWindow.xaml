@@ -14,7 +14,7 @@
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -27,7 +27,6 @@
         <Label Content="I need a dolla!" Grid.Column="1" Grid.Row="0" Style="{StaticResource headingStyle}"></Label>
 
         <Button x:Name="startBtn" Content="Start Game" Grid.Row="2" Grid.Column="1" Click="startBtn_Click" Style="{StaticResource answerBtn}"></Button>
-        <Button x:Name="leaderBtn" Content="Leaderboard" Grid.Row="3" Grid.Column="1" Style="{StaticResource invertedButton}"></Button>
-        <Button x:Name="quitBtn" Content="Quit Game" Grid.Row="4" Grid.Column="1" Click="quitBtn_Click" Style="{StaticResource answerBtn}"></Button>
+        <Button x:Name="quitBtn" Content="Quit Game" Grid.Row="4" Grid.Column="1" Click="quitBtn_Click" Style="{StaticResource invertedButton}"></Button>
     </Grid>
 </Window>

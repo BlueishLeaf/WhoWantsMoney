@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace WhoWantsMoney
 {
@@ -21,6 +22,10 @@ namespace WhoWantsMoney
             get
             {
                 return this._quizIndex;
+            }
+            set
+            {
+                this._quizIndex = value;
             }
         }
 
@@ -44,8 +49,16 @@ namespace WhoWantsMoney
         public void EndGame()
         {
             State = GameState.Concluded;
-            Console.WriteLine("You lose, heres your report:");
-            GameReport();
+            Completed comp = new Completed(this.CurrentPlayer.Score);
+
+            App.Current.Windows[0].Close();
+            comp.Show();
+
+        }
+        private void CloseAllWindows()
+        {
+            for (int intCounter = App.Current.Windows.Count - 1; intCounter > 0; intCounter--)
+                App.Current.Windows[intCounter].Close();
         }
 
         private void GameReport()
@@ -64,17 +77,11 @@ namespace WhoWantsMoney
         public void CorrectChoice()
         {
             AttemptList.Add(new Attempt() { QData = QuestionList[_quizIndex], IsCorrect=true });
-            Console.WriteLine("Correct Answer, you gain a point");
             CurrentPlayer.Score++;
             if (CurrentPlayer.Score==10)
             {
                 WinGame();
             }
-            else
-            {
-                _quizIndex++;
-            }
-
         }
         public void IncorrectChoice()
         {
@@ -84,20 +91,20 @@ namespace WhoWantsMoney
             {
                 EndGame();
             }
-            else
-            {
-                _quizIndex++;
-            }
         }
-        public void CheckAnswer(int index)
+        public bool CheckAnswer(int index, out string answer)
         {
             if (index == QuestionList[_quizIndex].CorrectIndex)
             {
+                answer = QuestionList[_quizIndex].Answers[QuestionList[_quizIndex].CorrectIndex]; 
                 CorrectChoice();
+                return true;
             }
             else
             {
+                answer = QuestionList[_quizIndex].Answers[QuestionList[_quizIndex].CorrectIndex];
                 IncorrectChoice();
+                return false;
             }
         }
 
@@ -154,8 +161,6 @@ namespace WhoWantsMoney
 
             return randomisedQuestions;
         }
-
-
         public int CalculateScore()
         {
             return this.CurrentPlayer.Score;

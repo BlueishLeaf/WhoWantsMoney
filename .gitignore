@@ -2,5 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/WhoWantsMoney/.vs
-/WhoWantsMoney/bin
+/WhoWantsMoney/WhoWantsMoney/.vs
+/WhoWantsMoney/WhoWantsMoney/bin
